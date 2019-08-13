@@ -142,7 +142,10 @@ class FilePickerActivity : BaseFilePickerActivity(), PhotoPickerFragmentListener
 
     override fun onItemSelected() {
         val currentCount = PickerManager.currentCount
-        setToolbarTitle(currentCount)
+        val maxCount = PickerManager.getMaxCount()
+        if (maxCount != 1) {
+            setToolbarTitle(currentCount)
+        }
 
         if (PickerManager.getMaxCount() == 1 && currentCount == 1) {
             returnData(
